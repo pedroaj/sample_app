@@ -8,4 +8,22 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+
+
+    <!--todos:<%= Micropost.count %>
+    do user:<%= Micropost.where(user_id: @user.id).count %>-->
+
+    <% if @user.microposts.any? %>
+      <h3>Microposts</h3>
+      <span class="timestamp">(Total: <%= @user.microposts.count %>)</span>
+      <ol class="microposts">
+        <%= render @microposts %>
+      </ol>
+      <%= will_paginate @microposts %>
+    <% else %>
+      no microposts found...<br />
+      Count: <%= @user.microposts.count %>
+    <% end %>
+  </div>
 </div>
